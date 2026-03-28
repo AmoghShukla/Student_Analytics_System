@@ -1,160 +1,129 @@
-# Student Analytics System
+# 🧠 Student Analytics System
 
-## Overview
+A Python-based analytics system designed to process, validate, and analyze student academic data. This project leverages **Object-Oriented Programming (OOP)** principles, data validation, and functional programming to generate meaningful insights from structured datasets.
 
-The Student Analytics System is a modular Python project designed to load, validate, analyze, and manage academic records stored in JSON datasets. The project demonstrates advanced Python concepts including object‑oriented programming, abstract base classes, mixins, context managers, functional programming techniques, and strong type hinting.
+---
 
-The system provides a clean architecture that separates models, utilities, mixins, and services to make the code maintainable, reusable, and scalable.
+## 🚀 Tech Stack
 
-## Features
+| Layer                | Technology                              |
+| -------------------- | --------------------------------------- |
+| Language             | Python                                  |
+| Programming Paradigm | OOP + Functional Programming            |
+| Data Format          | JSON                                    |
+| Validation           | Pydantic                                |
+| Concepts Used        | Abstract Classes, Mixins, Encapsulation |
 
-* Object‑oriented design with abstract base classes
-* Encapsulation using property getters and setters
-* Validation of student marks (0–100)
-* Custom dunder methods for enhanced class behavior
-* JSON persistence layer for loading and saving datasets
-* Context‑managed file operations
-* Functional programming concepts using closures and functools.partial
-* Modular project structure
-* Full type hints for improved readability and maintainability
+---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
-student_analytics/
-│
-├── main.py
-│
-├── models/
-│   ├── __init__.py
-│   ├── person.py
-│   └── student.py
-│
-├── mixins/
-│   ├── __init__.py
-│   └── json_mixin.py
-│
-├── utils/
-│   ├── __init__.py
-│   └── graders.py
-│
-├── services/
-│   ├── __init__.py
-│   └── student_service.py
-│
-└── data/
-    └── students.json
+Student_Analytics_System/
+├── data/
+│   └── student_data.json          # Input dataset
+├── src/
+│   ├── models/
+│   │   └── student.py             # Student class & data model
+│   ├── validators/
+│   │   └── validator.py           # Data validation logic
+│   ├── analytics/
+│   │   └── analytics_engine.py    # Core analytics logic
+│   ├── utils/
+│   │   └── helpers.py             # Utility functions
+│   └── mixins/
+│       └── report_mixin.py        # Reusable reporting features
+├── main.py                        # Entry point
+├── requirements.txt
+└── README.md
 ```
 
-## Core Concepts Demonstrated
+---
 
-### Abstract Base Classes
+## ⚙️ Setup & Installation
 
-The `Person` class defines a contract that all derived classes must follow by implementing:
+### 1. Clone the Repository
 
-* `get_details()`
-* `to_dict()`
-
-### Encapsulation and Property Validation
-
-The `Student` class protects internal data using private attributes and property setters that validate marks before assignment.
-
-### Custom Dunder Methods
-
-The `Student` class implements several special methods:
-
-* `__len__` – number of subjects
-* `__getitem__` – access marks by subject
-* `__gt__` – compare students by average marks
-* `__add__` – combine subject sets
-* `__str__` and `__repr__` – readable object representations
-
-### Mixins
-
-The `JSONMixin` provides reusable JSON persistence functionality including:
-
-* Safe file handling with context managers
-* Loading JSON datasets
-* Saving JSON datasets
-
-### Context Managers
-
-File operations are handled using a custom context manager to ensure files are safely opened and closed.
-
-### Functional Programming
-
-The project demonstrates:
-
-* Closures using a dynamic grader generator
-* `functools.partial` for function specialization
-
-Example:
-
-```
-make_square = partial(power, exponent=2)
+```bash
+git clone https://github.com/AmoghShukla/Student_Analytics_System.git
+cd Student_Analytics_System
 ```
 
-## Example Usage
+### 2. Create & Activate Virtual Environment
 
-```
-from models import Student
-from utils import make_grader
+```bash
+python -m venv venv
 
-student = Student("Alice", 1, {"Math": 85, "Physics": 90})
+# Windows
+venv\\Scripts\\activate
 
-print(student.get_details())
-print("Average:", student.average())
-
-grader = make_grader(50)
-print("Result:", grader(student))
+# macOS/Linux
+source venv/bin/activate
 ```
 
-## JSON Data Format
+### 3. Install Dependencies
 
-Example dataset:
-
-```
-[
-  {
-    "name": "Alice",
-    "roll_number": 1,
-    "marks": {
-      "Math": 85,
-      "Physics": 90
-    }
-  }
-]
+```bash
+pip install -r requirements.txt
 ```
 
-## Running the Project
+---
 
-1. Clone the repository
+### 4. Run the Application
 
-```
-git clone <repository-url>
-```
-
-2. Navigate into the project
-
-```
-cd student_analytics
-```
-
-3. Run the main script
-
-```
+```bash
 python main.py
 ```
 
-## Potential Extensions
+---
 
-* Student ranking and leaderboard generation
-* Statistical analysis of class performance
-* Command line interface for dataset operations
-* Integration with a database
-* REST API using FastAPI
-* Unit testing using pytest
+## 📊 Features
 
-## License
+* Load and parse student data from JSON
+* Validate data using Pydantic schemas
+* Perform analytics on:
 
-This project is intended for educational and demonstration purposes.
+  * Student performance
+  * Subject-wise scores
+  * Aggregated statistics
+* Generate structured reports
+* Modular and scalable architecture
+
+---
+
+## 🔍 Example Use Cases
+
+* Analyze academic performance trends
+* Identify top-performing students
+* Generate reports for institutions
+* Practice real-world data handling & validation
+
+---
+
+## 📦 Dependencies
+
+```
+pydantic
+```
+
+Install with:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a branch: `git checkout -b feature/your-feature`
+3. Commit: `git commit -m "Add feature"`
+4. Push: `git push origin feature/your-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is open source and available under the MIT License.
